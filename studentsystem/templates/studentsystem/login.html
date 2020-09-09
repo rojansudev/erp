@@ -1,0 +1,12 @@
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'studentsystem:authenticate' %}" method="post">
+{% csrf_token %}
+<label for="student_id">Enter Student ID: </label>
+    <input id="student_id" type="text" name="student_id" value="Student ID">
+    <br/>
+<label for="student_password">Enter Password: </label>
+    <input id="student_password" type="password" name="student_password" value="FakePass">
+    <br/>
+<input type="submit" value="Submit">
+</form>

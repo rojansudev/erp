@@ -1,0 +1,39 @@
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Registered Courses in current semester</h2>
+
+<table>
+  <tr>
+    <th>Course ID</th>
+    <th>Course Name</th>
+    <th>Credits</th>
+  </tr>
+  {% for x in finalList %}
+    <tr>
+	    <td>{{x.course_id}}</td>
+	    <td>{{x.course_name}}</td>
+	    <td>{{x.credits}}</td>
+  	</tr>
+  {% endfor %}
+</table>
+<p>Go Back to <a href="{% url 'studentsystem:menu' %}">Menu</a></p>
+</body>

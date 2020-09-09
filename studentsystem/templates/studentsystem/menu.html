@@ -1,0 +1,7 @@
+<h3>Hello, {{ student_name }} welcome to your new semester</h3>
+<ul>
+  <li><a href="{% url 'studentsystem:viewcurrent' %}">View Courses Offered in Current Semester</a></li>
+  <li><a href="{% url 'studentsystem:history' %}">View Academic History</a></li>
+  <li><a href="{% url 'studentsystem:showregistered' %}">View Registered Courses</a></li>
+  <li><a href="{% url 'studentsystem:schedule' %}">View Schedule</a></li>
+</ul>

@@ -1,0 +1,52 @@
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Course Details</h2>
+
+<table>
+  <tr>
+    <th>Course ID</th>
+    <th>Course Name</th>
+    <th>Credits</th>
+    <th>Lec</th>
+    <th>Tut</th>
+    <th>Lab</th>
+    <th>Total Seats</th>
+  </tr>
+  <tr>
+    <td>{{course.course_id}}</td>
+    <td>{{course.course_name}}</td>
+    <td>{{course.course_credits}}</td>
+    <td>{{course.lec}}</td>
+    <td>{{course.tut}}</td>
+    <td>{{course.lab}}</td>
+    <td>{{course.total_seats}}</td>
+  </tr>
+</table>
+<p>Go Back to <a href="{% url 'studentsystem:menu' %}">Menu</a> <a href="{% url 'studentsystem:viewcurrent' %}">Courses</a></p>
+<p><a href="{% url 'studentsystem:registerDirect' temp %}">Register to Course</a></p>
+
+<br><br><br>
+{% if msg %}
+{{msg}}
+{% endif %}
+
+</body>

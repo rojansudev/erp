@@ -1,0 +1,8 @@
+<h1>Courses offered in current semester</h1>
+
+<ul>
+{% for course in courses %}
+    <li>{{ course.1.course_id }} -- {{ course.1.course_name }} <a href="{% url 'studentsystem:details' course.2 %}">View</a></li>
+{% endfor %}
+</ul>
+<p>Go Back to <a href="{% url 'studentsystem:menu' %}">Menu</a></p>

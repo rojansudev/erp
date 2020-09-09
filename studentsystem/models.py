@@ -35,19 +35,6 @@ class Department(models.Model):
     class Meta:
         db_table = 'Department'
 
-
-class Enroll(models.Model):
-    student = models.OneToOneField('Student', models.DO_NOTHING, db_column='Student_id', primary_key=True)  # Field name made lowercase.
-    course = models.ForeignKey(Course, models.DO_NOTHING, db_column='Course_id')  # Field name made lowercase.
-    course_grade = models.CharField(db_column='Course_grade', max_length=2, blank=True, null=True)  # Field name made lowercase.
-    enroll_date = models.DateField(db_column='Enroll_date', blank=True, null=True)  # Field name made lowercase.
-    course_status = models.CharField(db_column='Course_status', max_length=10, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        db_table = 'Enroll'
-        unique_together = (('student', 'course'),)
-
-
 class Instructor(models.Model):
     inst_id = models.IntegerField(db_column='Inst_id', primary_key=True)  # Field name made lowercase.
     inst_name = models.CharField(db_column='Inst_name', max_length=70, blank=True, null=True)  # Field name made lowercase.
@@ -64,7 +51,7 @@ class Instructor(models.Model):
 
 
 class Section(models.Model):
-    section_type = models.CharField(db_column='Section_type', primary_key=True, max_length=3)  # Field name made lowercase.
+    section_type = models.CharField(db_column='Section_type', max_length=3)  # Field name made lowercase.
     course = models.ForeignKey(Course, models.DO_NOTHING, db_column='Course_id')  # Field name made lowercase.
     location = models.CharField(db_column='Location', max_length=20, blank=True, null=True)  # Field name made lowercase.
     section_hour = models.IntegerField(db_column='Section_hour', blank=True, null=True)  # Field name made lowercase.
@@ -111,3 +98,13 @@ class Student(models.Model):
         db_table = 'Student'
 
 
+class Enroll(models.Model):
+    student = models.ForeignKey(Student, models.DO_NOTHING, db_column='Student_id')  # Field name made lowercase.
+    course = models.ForeignKey(Course, models.DO_NOTHING, db_column='Course_id')  # Field name made lowercase.
+    course_grade = models.CharField(db_column='Course_grade', max_length=2, blank=True, null=True)  # Field name made lowercase.
+    enroll_date = models.DateField(db_column='Enroll_date', blank=True, null=True)  # Field name made lowercase.
+    course_status = models.CharField(db_column='Course_status', max_length=10, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'Enroll'
+        unique_together = (('student', 'course'),)

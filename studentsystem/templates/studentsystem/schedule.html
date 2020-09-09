@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: center;
+}
+
+</style>
+</head>
+<body>
+
+<h2>Weekly Schedule</h2>
+
+<table>
+  <tr>
+    <th></th> 
+    {% for k,v in hourtime.items %}
+    <th>{{v}}</th>
+    {% endfor %}
+  </tr>
+
+  {% for k,v in calendar.items %}
+  <tr>
+    <th>{{k}}</th>
+    {% for hour,val in v.items%}
+    
+      <td>{{val}}</td>
+    
+    {% endfor %}
+  </tr>
+  {% endfor %}
+  </table>
+
+<br><br>
+<p><a href="{% url 'studentsystem:menu' %}">Home</a></p>
+
+</body>
+</html>
