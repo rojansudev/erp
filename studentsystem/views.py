@@ -78,7 +78,8 @@ def viewcurrent(request):
 def CourseDetails(request, course_id):
     org_courseid = " ".join((course_id.split('-')))
     course = get_object_or_404(Course, pk=org_courseid)
-    return render(request, 'studentsystem/CourseDetails.html', {'course':course,'temp':course_id})
+    sections=get_list_or_404(Section,course_id=org_courseid)
+    return render(request, 'studentsystem/CourseDetails.html', {'course':course,'temp':course_id,'sections':sections})
 
 #get academic history
 def history(request):
@@ -203,7 +204,7 @@ def registerForm(request):
 def registerDirect(request,course_id):
     org_courseid = " ".join((course_id.split('-')))
     course = get_object_or_404(Course, pk=org_courseid)
-
+    sections=get_list_or_404(Section,course_id=org_courseid)
     student_id=request.session['student_id']
     to_enroll=org_courseid
 
@@ -214,7 +215,7 @@ def registerDirect(request,course_id):
             msg="You are already registered to course"
         else:
             msg="Cannot register,You have taken it in previous semester"    
-        return render(request, 'studentsystem/CourseDetails.html', {'course':course,'msg':msg,'temp':course_id})
+        return render(request, 'studentsystem/CourseDetails.html', {'course':course,'msg':msg,'temp':course_id,'sections':sections})
     except (KeyError, Enroll.DoesNotExist):
         res=checkClash(student_id,to_enroll)
     
@@ -227,7 +228,7 @@ def registerDirect(request,course_id):
             msg="You are registered to "+ to_enroll
             
 
-        return render(request, 'studentsystem/CourseDetails.html', {'course':course,'msg':msg,'temp':course_id})
+        return render(request, 'studentsystem/CourseDetails.html', {'course':course,'msg':msg,'temp':course_id,'sections':sections})
         
 
     

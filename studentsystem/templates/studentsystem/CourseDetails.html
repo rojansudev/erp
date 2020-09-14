@@ -41,6 +41,37 @@ tr:nth-child(even) {
     <td>{{course.total_seats}}</td>
   </tr>
 </table>
+<br><br>
+<table>
+  <tr>
+    <th>Section</th>
+    <th>Instructor</th>
+    <th>Hour</th>
+    <th>Mon</th>
+    <th>Tue</th>
+    <th>Wed</th>
+    <th>Thu</th>
+    <th>Fri</th>
+    <th>Sat</th>
+  </tr>
+
+  {% for section in sections %}
+  <tr>
+    <td>{{section.section_type}}</td>
+    <td>{{section.inst.inst_name}}</td>
+    <td>{{section.section_hour}}</td>
+    <td>{{section.mon}}</td>
+    <td>{{section.tue}}</td>
+    <td>{{section.wed}}</td>
+    <td>{{section.thu}}</td>
+    <td>{{section.fri}}</td>
+    <td>{{section.sat}}</td>
+  </tr>
+  {% endfor%}
+
+</table>
+
+
 <p>Go Back to <a href="{% url 'studentsystem:menu' %}">Menu</a> <a href="{% url 'studentsystem:viewcurrent' %}">Courses</a></p>
 <p><a href="{% url 'studentsystem:registerDirect' temp %}">Register to Course</a></p>
 
